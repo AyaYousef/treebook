@@ -7,8 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<!--Start Header-->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">TreeBook</a>
+    <ul class="nav navbar-nav">
+      <li><%= link_to 'Statuses', statuses_path %></li>
+    </ul>
+  </div>
+</nav>
+<!--End Header-->
 
-<%= yield %>
+<div class="container">
+  <!-- yield is used to render the target page like index.html, edit.html,.. etc -->
+  <%= yield %>
+</div>
+
 
 </body>
 </html>
