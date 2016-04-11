@@ -2,10 +2,11 @@
   <h1>All of the statuses</h1>
 </div>
 
-<%= link_to 'Post a new status', new_status_path, class: "btn btn-primary"  %>
+<%= link_to 'Post a new status', new_status_path, class: "btn btn-success"  %>
 <% @statuses.each do |status| %>
   <div class="status">
-    <strong><%= status.name %></strong>
+    <!-- 3shn user.profile name ysht3'al check this https://teamtreehouse.com/community/way-to-store-firstname-with-ruby-on-rails-4 -->
+    <strong><%= status.user.profile_name %></strong>
     <p><%= status.content %></p>
     <div class="meta">
       <!-- badal ma a3mel Show hazher a5er update lel status by time-->
