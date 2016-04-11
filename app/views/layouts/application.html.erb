@@ -7,8 +7,35 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<!--Start Header-->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">TreeBook</a>
+    <ul class="nav navbar-nav">
+      <li><%= link_to 'Statuses', statuses_path %></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+        <li><%= link_to current_user.full_name, edit_user_registration_path %></li>
+        <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+          <li><%= link_to 'SignUp', new_user_registration_path %></li>
+          <li><%= link_to 'Log In', user_session_path %></li>
+      <% end %>
 
-<%= yield %>
+    </ul>
+  </div>
+</nav>
+<!--End Header-->
+
+<div class="container">
+  <!--devise config-->
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <!-- yield is used to render the target page like index.html, edit.html,.. etc -->
+  <%= yield %>
+</div>
+
 
 </body>
 </html>
