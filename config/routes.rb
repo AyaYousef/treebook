@@ -1,7 +1,21 @@
 Rails.application.routes.draw do
+  get 'profiles/show'
+
   devise_for :users, :controllers => { registrations: 'registrations' }
+  #devise_scope is used to change the hyper link in http.. instead of users/sign_in it should be sign_in directly
+  #the syntax is: get "the_name_should_appear", to: "controller"#"action".. we can get it from $ rake routes
+  #as: :login, as: :logout..etc are used to make a new route's paths' prefix for us with the new names in $ rake routes
+  devise_scope :user do
+    get "login", to: "devise/sessions#new", as: :login
+    get "signup", to: "registrations#new", as: :signup
+    get "logout", to: "devise/sessions#destroy", as: :logout
+  end
+
   resources :statuses
+  get "feed", to: 'statuses#index', as: :feed
   root to: 'statuses#index'
+
+  get "/:id", to: 'profiles#show'   #de etkatbt kda 3shan show mt3rafa fe el cotroller wa5da params[:id]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
