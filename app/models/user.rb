@@ -14,4 +14,14 @@ class User < ActiveRecord::Base
   def full_name
     first_name + " " + last_name
   end
+
+  # This method is used to retrieve the user's image who signed up in gravatar.com
+  # it gets the user's image by his email
+  def gravatar_url
+    # to remove white spaces from email
+    stripped_email = email.strip
+    downcased_email = stripped_email.downcase
+    hash = Digest::MD5.hexdigest(downcased_email)
+    "http://gravatar.com/avatar/#{hash}"
+  end
 end

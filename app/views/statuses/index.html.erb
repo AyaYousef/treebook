@@ -5,13 +5,18 @@
 <%= link_to 'Post a new status', new_status_path, class: "btn btn-success"  %>
 <% @statuses.each do |status| %>
   <div class="status">
-    <!-- 3shn user.profile name ysht3'al check this https://teamtreehouse.com/community/way-to-store-firstname-with-ruby-on-rails-4 -->
-    <strong><%= status.user.profile_name %></strong>
-    <p><%= status.content %></p>
-    <div class="meta">
-      <!-- badal ma a3mel Show hazher a5er update lel status by time-->
-      <%= link_to time_ago_in_words(status.created_at) + " ago", status %>
-      <!--this class admin will hide its content-->
+    <div class="row">
+      <div class="col-md-4">
+        <%= image_tag status.user.gravatar_url %>
+      </div>
+      <div class="col-md-8">
+        <!-- 3shn user.profile name ysht3'al check this https://teamtreehouse.com/community/way-to-store-firstname-with-ruby-on-rails-4 -->
+        <strong><%= status.user.profile_name %></strong>
+        <p><%= status.content %></p>
+        <div class="meta">
+          <!-- badal ma a3mel Show hazher a5er update lel status by time-->
+          <%= link_to time_ago_in_words(status.created_at) + " ago", status %>
+          <!--this class admin will hide its content-->
       <span class="admin">
         <!-- To add a link to EDIT the status.. we get its prefix from rake routes and followed by _path
         then pass the argument status 3shan tb2a edit 3le kol status lwa7daha mostkla bzatha
@@ -19,6 +24,8 @@
         | <%= link_to 'Edit', edit_status_path(status) %> |
         <%= link_to 'Delete', status, method: :delete, data: {confirm: "Are you sure you want to delet this status?"} %>
       </span>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>
