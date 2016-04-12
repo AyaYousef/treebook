@@ -1,6 +1,7 @@
 class StatusesController < ApplicationController
   before_action :set_status, only: [:show, :edit, :update, :destroy]
-
+  #To make sure users are signed in before accessing any page that require a Post from users in our website.
+  before_action :authenticate_user!, only: [:new]
   # GET /statuses
   # GET /statuses.json
   def index
