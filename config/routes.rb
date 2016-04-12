@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'profiles/show'
+
   devise_for :users, :controllers => { registrations: 'registrations' }
   #devise_scope is used to change the hyper link in http.. instead of users/sign_in it should be sign_in directly
   #the syntax is: get "the_name_should_appear", to: "controller"#"action".. we can get it from $ rake routes
