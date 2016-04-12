@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :profile_name, presence: true
   validates :profile_name, uniqueness: true,
                             format: {
-                              with: /\A[a-zA-Z\-\_]+\Z/,
+                              with: /\A[a-zA-Z0-9_\-]+\z/,
                               message: "Must be formatted correctly."}
   has_many :statuses
   # def fullname method is used to concatenate the first name and the last name together
